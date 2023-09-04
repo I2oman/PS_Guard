@@ -1,0 +1,579 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="{% static 'imgs/PS_Guard_Logo.ico' %}"/>
+    <title>PS Guard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/psGstylesheet.css' %}"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap"
+            rel="stylesheet"
+    />
+</head>
+
+<div class="banner">
+    <div class="banner_backgroung" style="background-image: url('{{ background_img }}');"></div>
+    <div class="banner_img" style="background-image: url('{{ background_img }}');"></div>
+</div>
+
+<body>
+<header>
+    <div class="banner_overlay">
+        <nav class="nav_bar">
+          <span class="nav_el">
+            <a class="nav_link" href="/">
+              <img class="logo" src="{% static 'imgs/PS_Guard_Big_Logo.png' %}" alt="logo loading ©"/>
+            </a>
+          </span>
+            <span class="nav_el">
+            <a class="nav_link" id="is_active" href="/">Home</a>
+          </span>
+            <span class="nav_el">
+            <a class="nav_link" href="/">Games</a>
+          </span>
+            <span class="nav_el">
+            <a class="nav_link" href="/">Trophies</a>
+          </span>
+            <span class="nav_el" style="flex-grow: 96">
+            <a class="nav_link logIn_btn" id="" href="/">
+              LOG IN or CREATE ACCOUNT
+            </a>
+          </span>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="user_update hide">
+        <form id="myForm" method="post" action="">
+            <div class="user_row">
+                <input class="input_field" placeholder=" PS Username" name="nick"/>
+
+                <script>
+                    function updateAction() {
+                        var psnIdInput = document.getElementById('psnId');
+                        var form = document.getElementById('myForm');
+                        form.action = psnIdInput.value;
+                    }
+                </script>
+
+                <input class="input_btn" type="submit" value="Update User"/>
+            </div>
+        </form>
+    </div>
+    <!--  -->
+    <div class="user_info hide">
+        <div class="user_icon">
+            <img class="user_img" src="" alt="profile_img"/>
+            <img class="ps-plus" src="{% static 'imgs/ps-plus.png' %}" alt="profile_img"/>
+        </div>
+        <div class="user_stats">
+          <span class="stats_el" style="flex-grow: 19">
+            <p class="nicname">Nicname</p>
+          </span>
+            <span class="stats_el">
+            <div class="lvl">
+              <div class="tier_img tr_1"></div>
+              <div class="lvl_column">
+                <p class="lvl_num">160</p>
+                <div class="progress_bar">
+                  <div style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+          </span>
+            <span class="stats_el">
+            <div class="trophy">
+              <div class="trophy_backgroung trp_total"></div>
+              <p class="trp_font trp_total">242</p>
+            </div>
+          </span>
+            <span class="stats_el">
+            <div class="trophy">
+              <div class="trophy_backgroung trp_platinum"></div>
+              <p class="trp_font trp_platinum">2</p>
+            </div>
+          </span>
+            <span class="stats_el">
+            <div class="trophy">
+              <div class="trophy_backgroung trp_gold"></div>
+              <p class="trp_font trp_gold">12</p>
+            </div>
+          </span>
+            <span class="stats_el">
+            <div class="trophy">
+              <div class="trophy_backgroung trp_silver"></div>
+              <p class="trp_font trp_silver">20</p>
+            </div>
+          </span>
+            <span class="stats_el">
+            <div class="trophy">
+              <div class="trophy_backgroung trp_bronze"></div>
+              <p class="trp_font trp_bronze">222</p>
+            </div>
+          </span>
+        </div>
+    </div>
+    <!--  -->
+    <div class="game_page_shift"></div>
+    <!--  -->
+    <div class="main_content_background">
+        <div class="main_content">
+            <div class="main_overlay">
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">GAMES PLAYED</div>
+                </div>
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">COMPLETED GAMES</div>
+                </div>
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">COMPLETION</div>
+                </div>
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">EARNED TROPHIES</div>
+                </div>
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">UNEARNED TROPHIES</div>
+                </div>
+                <div class="overlay_el">
+                    <div class="el_value">?</div>
+                    <div class="el_name">TROPHIES PER DAY</div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="main_content_tab">
+                <div class="title_row hide">USERNAME'S PROFILE</div>
+                <div class="profile_page" style="display: none">
+                    <div class="recent_holder" style="display: none"></div>
+                    <div class="games_holder">
+                        <div class="game_filter">
+                            <p>Games</p>
+                        </div>
+                        <div class="game_search_111" style="display: none"></div>
+
+                        <table>
+                            <tr class="">
+                                <th style="width: 0px">
+                                    <a href="">
+                                        <img class="game_img" src="" alt="no_img"
+                                        />
+                                    </a>
+                                </th>
+                                <th>
+                                    <a class="text_link" href="">Title name</a>
+                                    <p class="info_text"><b>20</b> of <b>40</b> Trophies</p>
+                                    <p class="info_text">3 <sup>rd</sup> August 2023</p>
+                                </th>
+                                <th style="width: 0px">
+                                    <div class="game_platforms">
+                                        <div class="platform_ps5">PS5</div>
+                                        <div class="platform_ps4">PS4</div>
+                                        <div class="platform_ps3">PS3</div>
+                                        <div class="platform_psvita">PSVITA</div>
+                                    </div>
+                                </th>
+                                <th style="width: 0px">
+                                    <div class="separator">
+                                        <div class="th_border left"></div>
+                                        <div class="game_rank">
+                                            <div class="rank S">S</div>
+                                            <div class="rank_text">RANK</div>
+                                        </div>
+                                        <div class="th_border right"></div>
+                                    </div>
+                                </th>
+                                <th style="width: 0px">
+                                    <div class="title_sumary">
+                                        <div class="title_trophies">
+                                            <div class="tt_el">
+                                                <div class="trophy_backgroung trp_gold"></div>
+                                                <div class="tt_font trp_gold">11</div>
+                                            </div>
+                                            <div class="tt_el">
+                                                <div class="trophy_backgroung trp_silver"></div>
+                                                <div class="tt_font trp_silver">18</div>
+                                            </div>
+                                            <div class="tt_el">
+                                                <div class="trophy_backgroung trp_bronze"></div>
+                                                <div class="tt_font trp_bronze">81</div>
+                                            </div>
+                                        </div>
+                                        <div class="title_progress">
+                                            <div style="width: 80%"></div>
+                                            <p>80%</p>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th style="width: 0px">
+                                    <div class="separator">
+                                        <div class="th_border left"></div>
+                                        <div class="rarity_div">
+                                            <div class="heist_trophy completed_off"></div>
+                                            <div class="rarity completed_off">88.88%</div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <div class="trophies_holder"></div> -->
+                </div>
+                <!--  -->
+                <div class="title_row">{{ onlineId|upper }} ⮞ {{ title_name }}</div>
+                <div class="game_page">
+                    <div class="trophy_column">
+                        <div
+                                {% if earned_trophies.platinum == '1' %}
+                                    class="profile_info platinum"
+                                {% elif progress == 100 %}
+                                    class="profile_info completed"
+                                {% else %}
+                                    class="profile_info"
+                                {% endif %}
+                        >
+                            <div class="pr_in_el min_width">
+                                <a href="/{{ onlineId }}">
+                                    <img class="profile_img" src="{{ avatar_url }}" alt="profile_img"/>
+                                </a>
+                            </div>
+                            <div class="pr_in_el">
+                                <a class="text_link" href="/{{ onlineId }}">{{ onlineId|upper }}</a>
+                                <p class="info_text">
+                                    {% if progress == 100 %}
+                                        All <b>{{ defined_trophies_total }}</b> Trophies
+                                    {% else %}
+                                        <b>{{ earned_trophies_total }}</b> of
+                                        <b>{{ defined_trophies_total }}</b> Trophies
+                                    {% endif %}
+                                </p>
+                                <p class="info_text">
+                                    {% if progress == 100 or earned_trophies.platinum == "1" %}
+                                        {% if earned_trophies.platinum == "1" %}
+                                            <b>Platinum</b>
+                                        {% else %}
+                                            <b>Completed</b>
+                                        {% endif %}
+                                        <bullet>•</bullet>
+                                    {% endif %}
+                                    {{ last_update.day }}
+                                    <sup>{{ last_update.suffix }}</sup>
+                                    {{ last_update.month }}
+                                    {{ last_update.year }}
+                                </p>
+                            </div>
+                            <div class="pr_in_el min_width">
+                                <div class="game_rank">
+                                    <div class="rank {{ rank }}" style="font-size: 35px">{{ rank }}</div>
+                                    <div class="rank_text">RANK</div>
+                                </div>
+                            </div>
+                            <div class="pr_in_el min_width separator">
+                                <div class="th_border left"></div>
+                                <div class="rarity_div">
+                                    {% if defined_trophies.platinum == "1" %}
+                                        {% if earned_trophies.platinum == "1" %}
+                                            <div class="heist_trophy platinum_on"></div>
+                                        {% else %}
+                                            <div class="heist_trophy platinum_off"></div>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if progress == 100 %}
+                                            <div class="heist_trophy complete_on"></div>
+                                        {% else %}
+                                            <div class="heist_trophy complete_off"></div>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                <div class="th_border right"></div>
+                            </div>
+                            <div class="pr_in_el min_width" style="display: flex">
+                                <div class="title_sumary">
+                                    <div class="title_trophies">
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_gold"></div>
+                                            <div class="tt_font trp_gold">{{ earned_trophies.gold }}</div>
+                                        </div>
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_silver"></div>
+                                            <div class="tt_font trp_silver">{{ earned_trophies.silver }}</div>
+                                        </div>
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_bronze"></div>
+                                            <div class="tt_font trp_bronze">{{ earned_trophies.bronze }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="title_progress">
+                                        <div style="width: {{ progress }}%"></div>
+                                        <p>{{ progress }}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="all_trophies_list">
+                            {% for group in trophies_list %}
+                                {% if group.group_id != "default" %}
+                                    <div class="DLC_header">DLC TROPHY PACK {{ group.group_id|add:"0" }}</div>
+                                {% endif %}
+                                <div
+                                        {% if group.earned_trophies.platinum == '1' or group.progress == 100 %}
+                                            {% if group.earned_trophies.platinum == '1' %}
+                                                class="DLC_row platinum"
+                                            {% else %}
+                                                class="DLC_row completed"
+                                            {% endif %}
+                                        {% else %}
+                                                class="DLC_row"
+                                        {% endif %}
+                                >
+                                    <div class="DLC_row_el">
+                                        <img class="DLC_img" src="{{ group.group_icon }}" alt=""/>
+                                    </div>
+                                    <div class="DLC_row_el" style="flex-grow: 1">
+                                        <div>
+                                            <p class="info_text">{{ group.group_name }}</p>
+                                            <p class="info_text">
+                                                {% if group.progress == 100 %}
+                                                    All <b>{{ group.defined_trophies_total }}</b> Trophies
+                                                {% else %}
+                                                    <b>{{ group.earned_trophies_total }}</b> of
+                                                    <b>{{ group.defined_trophies_total }}</b> Trophies
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="DLC_row_el">
+                                        {% if group.defined_trophies.platinum == "1" %}
+                                            {% if group.earned_trophies.platinum == "1" %}
+                                                <div class="heist_trophy platinum_on"></div>
+                                            {% else %}
+                                                <div class="heist_trophy platinum_off"></div>
+                                            {% endif %}
+                                        {% else %}
+                                            {% if group.progress == 100 %}
+                                                <div class="heist_trophy complete_on"></div>
+                                            {% else %}
+                                                <div class="heist_trophy complete_off"></div>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="DLC_row_el separator">
+                                        <div class="th_border left"></div>
+                                        <div class="title_sumary">
+                                            <div class="title_trophies">
+                                                <div class="tt_el">
+                                                    <div class="trophy_backgroung trp_gold"></div>
+                                                    <div class="tt_font trp_gold">{{ group.earned_trophies.gold }}</div>
+                                                </div>
+                                                <div class="tt_el">
+                                                    <div class="trophy_backgroung trp_silver"></div>
+                                                    <div class="tt_font trp_silver">{{ group.earned_trophies.silver }}</div>
+                                                </div>
+                                                <div class="tt_el">
+                                                    <div class="trophy_backgroung trp_bronze"></div>
+                                                    <div class="tt_font trp_bronze">{{ group.earned_trophies.bronze }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="title_progress">
+                                                <div style="width: {{ group.progress }}%"></div>
+                                                <p>{{ group.progress }}%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="DLC_trophies">
+                                    {% for trophy in group.trophies %}
+                                        <table>
+                                            <tr
+                                                    {% if trophy.earned %}
+                                                        class="completed"
+                                                    {% endif %}
+                                            >
+                                                <th style="width: 0px">
+                                                    <picture class="trophy_img {{ trophy.earned }}">
+                                                        {#                                                        {% if trophy.trophy_hidden and not trophy.earned and kwargs.secret_trophy == "hide" %}#}
+                                                        {#                                                            {% if trophy.progress_available %}#}
+                                                        {#                                                                <img#}
+                                                        {#                                                                        class="hidden_progress_column"#}
+                                                        {#                                                                        src="{% static 'imgs/icon_hidden.jpg' %}"#}
+                                                        {#                                                                />#}
+                                                        {#                                                                <span class="hidden_progress_column">{{ trophy.progress_rate }}</span>#}
+                                                        {#                                                            {% else %}#}
+                                                        {#                                                                <img src="{% static 'imgs/icon_hidden.jpg' %}"/>#}
+                                                        {#                                                            {% endif %}#}
+                                                        {#                                                        {% else %}#}
+                                                        <img src="{{ trophy.icon_url }}"/>
+                                                        {#                                                        {% endif %}#}
+                                                    </picture>
+                                                </th>
+
+                                                <th>
+                                                    {#                                                    {% if trophy.trophy_hidden and not trophy.earned and kwargs.secret_trophy == "hide" %}#}
+                                                    {#                                                        <p class="text_link">Secret Trophy</p>#}
+                                                    {#                                                        <p class="info_text">#}
+                                                    {#                                                            Earn this trophy to reveal it, or change the filtering#}
+                                                    {#                                                            settings above.#}
+                                                    {#                                                        </p>#}
+                                                    {#                                                    {% else %}#}
+                                                    <p class="text_link">{{ trophy.name }}</p>
+                                                    <p class="info_text">{{ trophy.detail }}</p>
+                                                    {#                                                    {% endif %}#}
+                                                </th>
+
+                                                {% if trophy.progress_available and not trophy.earned and trophy.progress_rate > 0 %}
+                                                    <th style="width: 0px">
+                                                        <div class="separator">
+                                                            <div class="trophy_progress">{{ trophy.progress }}/{{ trophy.progress_target }}</div>
+                                                            <div class="th_border right"></div>
+                                                        </div>
+                                                    </th>
+                                                {% endif %}
+
+                                                {% if trophy.progress_available or trophy.earned %}
+                                                    <th style="width: 0px">
+                                                        {% if trophy.progress_rate == 0 and not trophy.earned %}
+                                                            <div class="separator">
+                                                                <div class="trophy_progress"
+                                                                     style="color: #ff0000">{{ trophy.progress }}/{{ trophy.progress_target }}</div>
+                                                                <div class="th_border right"></div>
+                                                            </div>
+                                                        {% elif trophy.progress_rate > 0 or trophy.earned %}
+                                                            <div class="separator">
+                                                                <div
+                                                                        class="trophy_time {{ trophy.earned }}"
+                                                                >
+                                                                    {% if trophy.earned %}
+                                                                        <p class="info_text">
+                                                                            {{ trophy.earned_date.day }}
+                                                                            <sup>{{ trophy.earned_date.suffix }}</sup>
+                                                                            {{ trophy.earned_date.month }}
+                                                                            {{ trophy.earned_date.year }}
+                                                                        </p>
+                                                                        <p class="info_text">
+                                                                            {{ trophy.earned_date.time }}
+                                                                        </p>
+                                                                    {% else %}
+                                                                        <p class="info_text">
+                                                                            {{ trophy.update_date.day }}
+                                                                            <sup>{{ trophy.update_date.suffix }}</sup>
+                                                                            {{ trophy.update_date.month }}
+                                                                            {{ trophy.update_date.year }}
+                                                                        </p>
+                                                                        <p class="info_text">
+                                                                            {{ trophy.update_date.time }}
+                                                                        </p>
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="th_border right"></div>
+                                                            </div>
+                                                        {% endif %}
+                                                    </th>
+                                                {% endif %}
+
+                                                <th style="width: 0px">
+                                                    <div class="separator">
+                                                        <div class="trophy_rarity">
+                                                            <div class="rarity_percentage_div">
+                                                                <div class="rarity_img {{ trophy.rarity_class }}"></div>
+                                                                <p>{{ trophy.earn_rate }}%</p>
+                                                            </div>
+                                                            <p>{{ trophy.rarity }}</p>
+                                                        </div>
+                                                        <div class="th_border right"></div>
+                                                    </div>
+                                                </th>
+
+                                                <th style="width: 0px">
+                                                    {% if trophy_hidden %}
+                                                        <div class="trophy_type_img hidden"></div>
+                                                    {% else %}
+                                                        <div class="trophy_type_img {{ trophy.type|lower }}"></div>
+                                                    {% endif %}
+                                                </th>
+                                            </tr>
+                                        </table>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="about_title_column">
+                        <div class="title_image">
+                            <img style="width: 100%; height: auto; display: flex" src="{{ master_img }}"/>
+                        </div>
+
+                        <div class="title_description">
+                            <div class="total_trophies_info">
+                                <div class="total_trophies_info_el1">
+                                    {% for platform in platforms %}
+                                        <div class="platform_{{ platform|lower }}">{{ platform }}</div>
+                                    {% endfor %}
+                                </div>
+                                <div class="total_trophies_info_el2">
+                                    <div class="title_trophies">
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_platinum"></div>
+                                            <div class="tt_font trp_platinum">{{ defined_trophies.platinum }}</div>
+                                        </div>
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_gold"></div>
+                                            <div class="tt_font trp_gold">{{ defined_trophies.gold }}</div>
+                                        </div>
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_silver"></div>
+                                            <div class="tt_font trp_silver">{{ defined_trophies.silver }}</div>
+                                        </div>
+                                        <div class="tt_el">
+                                            <div class="trophy_backgroung trp_bronze"></div>
+                                            <div class="tt_font trp_bronze">{{ defined_trophies.bronze }}</div>
+                                        </div>
+                                    </div>
+                                    <p>{{ defined_trophies_total }} Trophies</p>
+                                </div>
+                            </div>
+                            <div class="title_info">
+                                <div class="row">
+                                    <div class="name">Publisher</div>
+                                    <div class="value">{{ publisherName }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="nav_bar">
+        <span class="nav_el">
+          <a class="nav_link" href="/">
+            <img
+                    class="logo"
+                    src="{% static 'imgs/PS_Guard_Big_Logo.png' %}"
+                    alt="logo loading ©"
+            />
+          </a>
+        </span>
+        <span class="nav_el">
+          <h1 class="nav_link">This project created in education purposes!</h1>
+        </span>
+        <span class="nav_el">
+          <a class="nav_link" href="/">
+            <img class="logo" src="{% static 'imgs/PS_Guard_Big_Logo.png' %}" alt="logo loading ©"/>
+          </a>
+        </span>
+    </div>
+</footer>
+</body>
+</html>
