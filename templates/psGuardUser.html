@@ -65,6 +65,14 @@
                 <input class="input_btn" type="submit" value="Update User"/>
             </div>
         </form>
+        {% if error == "True" %}
+            <div class="error_handler">
+                <div class="handler_content">
+                    <span>Error</span>
+                    <span>{{ desc }}</span>
+                </div>
+            </div>
+        {% endif %}
     </div>
     <!--  -->
     <div class="user_info">

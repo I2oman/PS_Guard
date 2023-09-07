@@ -10,6 +10,8 @@ def psgSearch(request):
 
 def psgUser(request, nick):
     userInfo = psn_cli.getUsersTitles(nick)
+    if userInfo["error"]:
+        return render(request, 'psGuardSearch.html', context=userInfo)
     return render(request, 'psGuardUser.html', context=userInfo)
 
 

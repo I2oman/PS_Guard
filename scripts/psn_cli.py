@@ -1,10 +1,14 @@
 from psnawp_api import PSNAWP
+from psnawp_api.core.psnawp_exceptions import PSNAWPNotFound, PSNAWPForbidden
 from pprint import pprint
 import datetime
 import json
-from scripts.config import NPSSO
+from dotenv import load_dotenv
+import os
 
-psnawp = PSNAWP(NPSSO)
+load_dotenv()
+
+psnawp = PSNAWP(os.getenv('NPSSO'))
 
 client = psnawp.me()
 print(f"ME - {client.online_id}")
@@ -48,9 +52,17 @@ def defineTrophies(trophies):
 
 
 def getUsersTitles(nickname):
-    finalUser = psnawp.user(online_id=nickname)
+    try:
+        finalUser = psnawp.user(online_id=nickname)
+    except PSNAWPNotFound:
+        return {"error": True, "desc": "Not Found"}
+
+    try:
+        userTrophySummary = finalUser.trophy_summary()
+    except PSNAWPForbidden:
+        return {"error": True, "desc": "Account is private"}
+
     userProfile = finalUser.profile()
-    userTrophySummary = finalUser.trophy_summary()
 
     # pprint(finalUser.profile())
     # print(finalUser.trophy_summary())
@@ -65,6 +77,7 @@ def getUsersTitles(nickname):
             avatar_url = dictionary["url"]
 
     user_dict = {
+        "error": False,
         "onlineId": userProfile["onlineId"],
         "aboutMe": userProfile["aboutMe"],
         "avatar_url": avatar_url,
