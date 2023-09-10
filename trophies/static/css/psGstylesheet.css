@@ -41,7 +41,8 @@ header {
     z-index: -1;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    background-position: 0 -25vh;
+    /*background-position: 0 -25vh;*/
+    background-position: 0 -22.5vh;
     filter: blur(50px) brightness(1.5);
     background-color: #373737;
 }
@@ -52,7 +53,8 @@ header {
     height: auto;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    background-position: 0 -95%;
+    /*background-position: 0 -95%;*/
+    background-position: 0 -90%;
     background-color: #373737;
 }
 
@@ -117,8 +119,8 @@ main {
 }
 
 .user_update {
-    margin: 2% auto;
-    margin-bottom: 5%;
+    margin: 4% auto;
+    margin-bottom: 6.05%;
     width: 30%;
     height: 250px;
     backdrop-filter: blur(25px);
@@ -186,8 +188,8 @@ main {
 }
 
 .user_info {
-    margin: 1% auto;
-    margin-bottom: 13.5%;
+    margin: 2% auto;
+    margin-bottom: 15.7%;
     width: 80%;
     height: 60px;
     display: flex;
@@ -372,7 +374,7 @@ main {
 }
 
 .game_page_shift {
-    margin-top: 16.9%;
+    margin-top: 20%;
 }
 
 .main_content_background {
@@ -388,7 +390,7 @@ main {
     position: relative;
     top: -137px;
     margin: auto;
-    width: 80%;
+    width: 70%;
     height: auto;
 }
 
