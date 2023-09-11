@@ -97,7 +97,10 @@ def getUsersTitles(nickname):
     # return user_dict
 
     usersTitles = list(finalUser.trophy_titles(limit=200))
-    user_dict["total_items"] = usersTitles[0].total_items_count
+    try:
+        user_dict["total_items"] = usersTitles[0].total_items_count
+    except:
+        user_dict["total_items"] = 0
     titles_list = []
     closest = datetime.timedelta(days=36500)
     closest_np_id = None
@@ -140,6 +143,8 @@ def getUsersTitles(nickname):
         # title_dict[""] = title.
         titles_list.append(title_dict)
     user_dict["titles"] = titles_list
+    if user_dict["total_items"] < 1:
+        return user_dict
     closest_id = psnawp.search().get_title_id(user_dict["latest_name"])[1]
     closest_game = psnawp.game_title(title_id=closest_id, np_communication_id=closest_np_id).get_details()[0]
     for dictionary in closest_game["media"]["images"]:

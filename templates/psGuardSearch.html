@@ -50,22 +50,26 @@
 
 <main>
     <div class="user_update">
-        <form id="myForm" method="post" action="">
-            {% csrf_token %}
-            <div class="user_row">
-                <input id="psnId" class="input_field" placeholder=" PS Username" name="nick" oninput="updateAction()"/>
+        <div class="user_row">
+            <input class="input_field" placeholder=" PS Username" id="nick" onkeydown="handleKeyPress(event)"/>
 
-                <script>
-                    function updateAction() {
-                        var psnIdInput = document.getElementById('psnId');
-                        var form = document.getElementById('myForm');
-                        form.action = psnIdInput.value;
+            <script>
+                function handleKeyPress(event) {
+                    if (event.key === 'Enter' || event.keyCode === 13) {
+                        searchUser();
                     }
-                </script>
+                }
 
-                <input class="input_btn" type="submit" value="Update User"/>
-            </div>
-        </form>
+                function searchUser() {
+                    var url = document.getElementById('nick').value;
+                    if (url.trim() !== '') {
+                        window.location.href = url;
+                    }
+                }
+            </script>
+
+            <button class="input_btn" onclick="searchUser()">Update User</button>
+        </div>
         {% if error %}
             <div class="error_handler">
                 <div class="handler_content">

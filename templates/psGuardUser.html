@@ -17,8 +17,13 @@
 </head>
 
 <div class="banner">
-    <div class="banner_backgroung" style="background-image: url('{{ latest_img }}');"></div>
-    <div class="banner_img" style="background-image: url('{{ latest_img }}');"></div>
+    {% if total_items > 0 %}
+        <div class="banner_backgroung" style="background-image: url('{{ latest_img }}');"></div>
+        <div class="banner_img" style="background-image: url('{{ latest_img }}');"></div>
+    {% else %}
+        <div class="banner_backgroung" style="background-image: url('{% static 'imgs/background.jpg' %}');"></div>
+        <div class="banner_img" style="background-image: url('{% static 'imgs/background.jpg' %}');"></div>
+    {% endif %}
 </div>
 
 <body>
